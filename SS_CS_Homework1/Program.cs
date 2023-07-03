@@ -12,36 +12,27 @@
 
             Task4();
 
-            Task5();
+            Homework1();
 
-            Task6();
+            Homework2();
 
-            Task7();
+            Homework3();
         }
 
+        /// <summary>
+        /// Define integer variables a and b.
+        ///Read values a and b from the console and calculate: a+b, a-b, a*b, a/b.
+        ///Output results on the console.
+        /// </summary>
         public static void Task1()
         {
-            int a, b;
-
-            Console.Write("Input a: ");
-            var inputA = Console.ReadLine();
-
-            var parsedA = int.TryParse(inputA, out a);
-
-            if (!parsedA)
+            if (!Helpers.PromptWithValidationInt("Input a: ", "Can't parse num a", out int a))
             {
-                Console.WriteLine("Can't parse num a");
                 return;
             }
 
-            Console.Write("Input b: ");
-            var inputB = Console.ReadLine();
-
-            var parsedB = int.TryParse(inputB, out b);
-
-            if (!parsedB)
+            if (!Helpers.PromptWithValidationInt("Input b: ", "Can't parse num b", out int b))
             {
-                Console.WriteLine("Can't parse num b");
                 return;
             }
 
@@ -83,16 +74,26 @@
             return result;
         }
 
+        /// <summary>
+        /// Output question “How are you?“. 
+        /// Define string variable answer.
+        /// Read value answer and output on the console: “You are(answer)". 
+        /// </summary>
         public static void Task2()
         {
             Console.WriteLine("How are you?");
-            Console.Write("Answer: ");
-            string answer = Console.ReadLine();
+
+            var answer = Helpers.Prompt("Answer: ");
+
             Console.WriteLine("You are " + answer);
 
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Read 3 variables of char type. 
+        /// Write message: “You enter(first char), (second char), (3 char)”
+        /// </summary>
         public static void Task3()
         {
             Console.Write("Enter 1st character: ");
@@ -118,28 +119,20 @@
             Console.ReadLine();
         }
 
+
+        /// <summary>
+        /// Enter 2 integer numbers. 
+        /// Check if they are both positive – use bool expression
+        /// </summary>
         public static void Task4()
         {
-            int num1, num2;
-            Console.Write("Enter first number: ");
-            var input1 = Console.ReadLine();
-
-            var parsed1 = int.TryParse(input1, out num1);
-
-            if (!parsed1)
+            if (!Helpers.PromptWithValidationInt("Enter first number: ", "Can't parse num 1", out int num1))
             {
-                Console.WriteLine("Can't parse num 1");
                 return;
             }
 
-            Console.Write("Enter second number: ");
-            var input2 = Console.ReadLine();
-
-            var parsed2 = int.TryParse(input2, out num2);
-
-            if (!parsed2)
+            if (!Helpers.PromptWithValidationInt("Enter second number: ", "Can't parse num 2", out int num2))
             {
-                Console.WriteLine("Can't parse num 2");
                 return;
             }
 
@@ -149,18 +142,16 @@
             Console.ReadLine();
         }
 
-        public static void Task5()
+
+        /// <summary>
+        /// Define integer variable a (side of the square). 
+        /// Read value from the console and calculate the area and perimeter of a square with length a.
+        /// Output results on the console.
+        /// </summary>
+        public static void Homework1()
         {
-            int a;
-
-            Console.Write("Enter a side of a square: ");
-            var inputA = Console.ReadLine();
-
-            var parsedA = int.TryParse(inputA, out a);
-
-            if (!parsedA)
+            if (!Helpers.PromptWithValidationInt("Enter a side of a square: ", "Can't parse num ", out int a))
             {
-                Console.WriteLine("Can't parse num");
                 return;
             }
 
@@ -181,21 +172,18 @@
             return side * side;
         }
 
-        public static void Task6()
+        /// <summary>
+        /// Define string name and integer age. 
+        /// Output question "What is your name?";
+        /// Read value name and output next question: "How old are you, (name)?". 
+        /// Read value age and output whole information
+        /// </summary>
+        public static void Homework2()
         {
-            string name;
-            int age;
-            Console.Write("What is your name? ");
-            name = Console.ReadLine();
-            Console.Write($"How old are you, {name}? ");
+            var name = Helpers.Prompt("What is your name? ");
 
-            var inputAge = Console.ReadLine();
-
-            var parsedAge = int.TryParse(inputAge, out age);
-
-            if (!parsedAge)
+            if (!Helpers.PromptWithValidationInt($"How old are you, {name}? ", "Can't parse age", out int age))
             {
-                Console.WriteLine("Can't parse age");
                 return;
             }
 
@@ -204,14 +192,15 @@
             Console.ReadLine();
         }
 
-        public static void Task7()
+        /// <summary>
+        /// Read double number r (radius of a circle).
+        /// Calculate the length(l= 2 * pi * r), area(S= pi * r * r), and volume(4/3*pi* r*r* r) of a circle.
+        /// </summary>
+        public static void Homework3()
         {
-            double radius;
-            Console.Write("Enter radius: ");
+            var inputRadius = Helpers.Prompt("Enter radius: ");
 
-            var inputRadius = Console.ReadLine();
-
-            var parsedRadius = double.TryParse(inputRadius, out radius);
+            var parsedRadius = double.TryParse(inputRadius, out double radius);
 
             if (!parsedRadius)
             {
